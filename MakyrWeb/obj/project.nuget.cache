@@ -1,0 +1,15 @@
+{
+  "version": 2,
+  "dgSpecHash": "rjWHxwiEe1zZ/s1e3iD4GnFbYsAHt45L4G8PHqc2QDoZLdHysgjL6ZVFuHEz5h41gn/RGkM0zRLg4MpIG0jjHA==",
+  "success": true,
+  "projectFilePath": "E:\\projects\\Makyr\\MakyrWeb\\MakyrWeb.csproj",
+  "expectedPackageFiles": [],
+  "logs": [
+    {
+      "code": "NU1803",
+      "level": "Warning",
+      "warningLevel": 1,
+      "message": "You are running the 'restore' operation with an 'HTTP' source, 'http://nuget.selise.biz/nuget'. Non-HTTPS access will be removed in a future version. Consider migrating to an 'HTTPS' source."
+    }
+  ]
+}
