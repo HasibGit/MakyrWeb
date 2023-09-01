@@ -1,4 +1,5 @@
-﻿using Microsoft.EntityFrameworkCore;
+﻿using MakyrWeb.Models;
+using Microsoft.EntityFrameworkCore;
 
 namespace MakyrWeb.Data
 {
@@ -7,5 +8,7 @@ namespace MakyrWeb.Data
         public ApplicationDbContext(DbContextOptions<ApplicationDbContext> options) : base(options) {
 
         }
+
+        public DbSet<Category> Categories { get; set; }
     }
 }
