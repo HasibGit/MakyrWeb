@@ -10,7 +10,7 @@ namespace MakyrWeb.Models
 
         [Required]
         [DisplayName("Category Name")]
-        [Range(3, 50)]
+        [StringLength(50, MinimumLength = 3, ErrorMessage = "Category Name must be between 3 and 50 characters.")]
         public string Name { get; set; }
 
         [Required]
