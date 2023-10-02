@@ -55,11 +55,41 @@ namespace MakyrWeb.Controllers
         {
             if (ModelState.IsValid)
             {
-                _db.Categories.Add(category);
+                _db.Categories.Update(category);
                 _db.SaveChanges();
                 return RedirectToAction("Index");
             }
             return View();
+        }
+
+        public IActionResult Delete(int? id)
+        {
+            if (id == null || id == 0)
+            {
+                return NotFound();
+            }
+
+            Category? obj = _db.Categories.FirstOrDefault(x => x.Id == id);
+
+            if(obj == null)
+            {
+                return NotFound();
+            }
+
+            return View(obj);
+        }
+
+        [HttpPost]
+        public IActionResult Delete(Category category)
+        {
+            if(category == null)
+            {
+                return NotFound();
+            }
+
+            _db.Categories.Remove(category);
+            _db.SaveChanges();
+            return RedirectToAction("Index");
         }
     }
 }
