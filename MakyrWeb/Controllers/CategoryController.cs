@@ -91,7 +91,7 @@ namespace MakyrWeb.Controllers
 
             _db.Categories.Remove(category);
             _db.SaveChanges();
-            TempData["success"] = "Category deleted successfully";
+            TempData["error"] = "Category deleted successfully";
             return RedirectToAction("Index");
         }
     }
