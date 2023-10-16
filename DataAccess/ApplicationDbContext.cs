@@ -1,7 +1,7 @@
-﻿using MakyrWeb.Models;
+﻿using Makyr.Models;
 using Microsoft.EntityFrameworkCore;
 
-namespace MakyrWeb.Data
+namespace Makyr.DataAccess
 {
     public class ApplicationDbContext : DbContext
     {

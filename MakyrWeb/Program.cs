@@ -1,4 +1,4 @@
-using MakyrWeb.Data;
+using Makyr.DataAccess;
 using Microsoft.EntityFrameworkCore;
 
 var builder = WebApplication.CreateBuilder(args);

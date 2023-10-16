@@ -1,5 +1,5 @@
-﻿using MakyrWeb.Data;
-using MakyrWeb.Models;
+﻿using Makyr.DataAccess;
+using Makyr.Models;
 using Microsoft.AspNetCore.Mvc;
 
 namespace MakyrWeb.Controllers

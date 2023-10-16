@@ -1,4 +1,4 @@
-namespace MakyrWeb.Models
+namespace Makyr.Models
 {
     public class ErrorViewModel
     {

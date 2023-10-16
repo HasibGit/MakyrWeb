@@ -1,7 +1,7 @@
 ﻿using System.ComponentModel;
 using System.ComponentModel.DataAnnotations;
 
-namespace MakyrWeb.Models
+namespace Makyr.Models
 {
     public class Category
     {
