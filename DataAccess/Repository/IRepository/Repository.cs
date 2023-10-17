@@ -1,10 +1,5 @@
 ﻿using Microsoft.EntityFrameworkCore;
-using System;
-using System.Collections.Generic;
-using System.Linq;
 using System.Linq.Expressions;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Makyr.DataAccess.Repository.IRepository
 {
@@ -16,7 +11,7 @@ namespace Makyr.DataAccess.Repository.IRepository
         public Repository(ApplicationDbContext db)
         {
             _db = db;
-            dbSet = _db.Set<T>();  
+            dbSet = _db.Set<T>();
         }
 
         public void Add(T entity)
@@ -55,17 +50,7 @@ namespace Makyr.DataAccess.Repository.IRepository
             dbSet.Remove(entity);
         }
 
-        public async Task RemoveAsync(T entity)
-        {
-            dbSet.Remove(entity);
-        }
-
         public void RemoveRange(IEnumerable<T> entities)
-        {
-            dbSet.RemoveRange(entities);
-        }
-
-        public async Task RemoveRangeAsync(IEnumerable<T> entities)
         {
             dbSet.RemoveRange(entities);
         }

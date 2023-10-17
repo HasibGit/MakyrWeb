@@ -1,4 +1,5 @@
 ﻿using Makyr.DataAccess;
+using Makyr.DataAccess.Repository.IRepository;
 using Makyr.Models;
 using Microsoft.AspNetCore.Mvc;
 
@@ -6,14 +7,14 @@ namespace MakyrWeb.Controllers
 {
     public class CategoryController : Controller
     {
-        private readonly ApplicationDbContext _db;
-        public CategoryController(ApplicationDbContext db)
+        private readonly ICategoryRepository _categoryRepo;
+        public CategoryController(ICategoryRepository categoryRepo)
         {
-            _db = db;
+            _categoryRepo = categoryRepo;
         }
         public IActionResult Index()
         {
-            List<Category> categories = _db.Categories.ToList();
+            IEnumerable<Category> categories = _categoryRepo.GetAll();
             return View(categories);
         }
 
@@ -27,22 +28,22 @@ namespace MakyrWeb.Controllers
         {
             if (ModelState.IsValid)
             {
-                _db.Categories.Add(category);
-                _db.SaveChanges();
+                _categoryRepo.Add(category);
+                _categoryRepo.Save();
                 TempData["success"] = "Category created successfully";
                 return RedirectToAction("Index");
             }
             return View();
         }
 
-        public IActionResult Edit(int? id)
+        public async Task<IActionResult> Edit(int? id)
         {
             if(id == null || id == 0)
             {
                 return NotFound();
             }
 
-            Category category = _db.Categories.FirstOrDefault(x => x.Id == id);
+            Category category = await _categoryRepo.GetAsync(x => x.Id == id);
 
             if(category == null)
             {
@@ -56,22 +57,22 @@ namespace MakyrWeb.Controllers
         {
             if (ModelState.IsValid)
             {
-                _db.Categories.Update(category);
-                _db.SaveChanges();
+                _categoryRepo.Update(category);
+                _categoryRepo.Save();
                 TempData["success"] = "Category updated successfully";
                 return RedirectToAction("Index");
             }
             return View();
         }
 
-        public IActionResult Delete(int? id)
+        public async Task<IActionResult> Delete(int? id)
         {
             if (id == null || id == 0)
             {
                 return NotFound();
             }
 
-            Category? obj = _db.Categories.FirstOrDefault(x => x.Id == id);
+            Category? obj = await _categoryRepo.GetAsync(x => x.Id == id);
 
             if(obj == null)
             {
@@ -89,8 +90,8 @@ namespace MakyrWeb.Controllers
                 return NotFound();
             }
 
-            _db.Categories.Remove(category);
-            _db.SaveChanges();
+            _categoryRepo.Remove(category);
+            _categoryRepo.Save();
             TempData["error"] = "Category deleted successfully";
             return RedirectToAction("Index");
         }

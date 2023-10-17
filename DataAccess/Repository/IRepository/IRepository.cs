@@ -1,9 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Linq.Expressions;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.Linq.Expressions;
 
 namespace Makyr.DataAccess.Repository.IRepository
 {
@@ -16,10 +11,6 @@ namespace Makyr.DataAccess.Repository.IRepository
         void Add(T entity);
         Task AddAsync(T entity);
         void Remove(T entity);
-        Task RemoveAsync(T entity);
         void RemoveRange(IEnumerable<T> entities);
-        Task RemoveRangeAsync(IEnumerable<T> entities);
-        
-
     }
 }
