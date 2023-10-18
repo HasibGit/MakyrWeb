@@ -3,7 +3,7 @@ using Makyr.DataAccess.Repository.IRepository;
 using Makyr.Models;
 using Microsoft.AspNetCore.Mvc;
 
-namespace MakyrWeb.Controllers
+namespace MakyrWeb.Areas.Admin.Controllers
 {
     public class CategoryController : Controller
     {
@@ -38,14 +38,14 @@ namespace MakyrWeb.Controllers
 
         public async Task<IActionResult> Edit(int? id)
         {
-            if(id == null || id == 0)
+            if (id == null || id == 0)
             {
                 return NotFound();
             }
 
             Category category = await _categoryRepo.GetAsync(x => x.Id == id);
 
-            if(category == null)
+            if (category == null)
             {
                 return NotFound();
             }
@@ -74,7 +74,7 @@ namespace MakyrWeb.Controllers
 
             Category? obj = await _categoryRepo.GetAsync(x => x.Id == id);
 
-            if(obj == null)
+            if (obj == null)
             {
                 return NotFound();
             }
@@ -85,7 +85,7 @@ namespace MakyrWeb.Controllers
         [HttpPost]
         public IActionResult Delete(Category category)
         {
-            if(category == null)
+            if (category == null)
             {
                 return NotFound();
             }
