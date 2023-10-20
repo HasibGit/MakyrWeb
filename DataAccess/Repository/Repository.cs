@@ -1,7 +1,8 @@
-﻿using Microsoft.EntityFrameworkCore;
+﻿using Makyr.DataAccess.Repository.IRepository;
+using Microsoft.EntityFrameworkCore;
 using System.Linq.Expressions;
 
-namespace Makyr.DataAccess.Repository.IRepository
+namespace Makyr.DataAccess.Repository
 {
     public class Repository<T> : IRepository<T> where T : class
     {

@@ -1,11 +1,7 @@
-﻿using Makyr.Models;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using Makyr.DataAccess.Repository.IRepository;
+using Makyr.Models;
 
-namespace Makyr.DataAccess.Repository.IRepository
+namespace Makyr.DataAccess.Repository
 {
     public class CategoryRepository : Repository<Category>, ICategoryRepository
     {

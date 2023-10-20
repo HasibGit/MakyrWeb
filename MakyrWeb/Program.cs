@@ -1,4 +1,5 @@
 using Makyr.DataAccess;
+using Makyr.DataAccess.Repository;
 using Makyr.DataAccess.Repository.IRepository;
 using Microsoft.EntityFrameworkCore;
 
@@ -19,7 +20,9 @@ builder.Services.AddDbContext<ApplicationDbContext>(
             }
             );
     });
+
 builder.Services.AddScoped<ICategoryRepository, CategoryRepository>();
+builder.Services.AddScoped<IGraphicsCardRepository, GraphicsCardRepository>();
 
 var app = builder.Build();
 
