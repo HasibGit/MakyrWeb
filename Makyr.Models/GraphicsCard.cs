@@ -68,7 +68,7 @@ namespace Makyr.Models
 
         // Power Specs
         public string Connectors { get; set; }
-        [Display(Name = "Recommended PSU")]
+        [Display(Name = "Recommended PSU (Watt)")]
         public int RecommendedPsu { get; set; } // in Watt
 
         // Graphics api support
@@ -88,11 +88,11 @@ namespace Makyr.Models
         public string Condition { get; set; } // new or used
 
         // Warrenty
-        [Display(Name = "Manufacturing Warrenty")]
+        [Display(Name = "Manufacturing Warrenty (Months)")]
         [Range(0, int.MaxValue, ErrorMessage = "Manufacturing warranty must be a positive number")]
         public int ManufacturingWarrenty { get; set; } // warrenty in months
 
-        [Display(Name = "Service Warrenty")]
+        [Display(Name = "Service Warrenty (Months)")]
         [Range(0, int.MaxValue, ErrorMessage = "Service warranty must be a positive number")]
         public int ServiceWarrenty { get; set; } // for used gpu
     }

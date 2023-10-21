@@ -25,5 +25,7 @@ namespace Makyr.Utility
 
 
         public static List<int> GPUBusTypes { get; } = new List<int> { 32, 64, 128, 256, 384, 512 };
+
+        public static List<string> GPUConditions { get; } = new List<string> { "New", "Used" };
     }
 }

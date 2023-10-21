@@ -20,3 +20,10 @@ html {
 body {
   margin-bottom: 60px;
 }
+
+.required::after {
+    content: "*";
+    font-weight: bold;
+    color: red;
+    margin-left: 3px;
+}
