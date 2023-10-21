@@ -42,15 +42,15 @@ namespace Makyr.Models
         [Display(Name = "Memory Size")]
         public int MemorySize { get; set; } // 2Gb, 4Gb, 6Gb, 8Gb
 
-        [Display(Name = "Base Clock")]
+        [Display(Name = "Base Clock (Mhz)")]
         [Range(1, int.MaxValue, ErrorMessage = "Clock speed must be at least 1")]
         public int BaseClock { get; set; } // in Mhz
 
-        [Display(Name = "Boost Clock")]
+        [Display(Name = "Boost Clock (Mhz)")]
         [Range(1, int.MaxValue, ErrorMessage = "Clock speed must be at least 1")]
         public int BoostClock { get; set; } // in Mhz
 
-        [Display(Name = "Memory Clock Speed")]
+        [Display(Name = "Memory Clock Speed (Gbps)")]
         [Range(1, int.MaxValue, ErrorMessage = "Memory clock speed must be at least 1")]
         public int MemoryClockSpeed { get; set; } // in Gbps
 

@@ -53,6 +53,7 @@
                             <div class="mb-3">
                                 <label asp-for="MemoryType" class="mb-2"></label>
                                 <select asp-for="MemoryType" class="form-select">
+                                    <option value="">Select Memory Type</option>
                                     @foreach (var memoryType in Enum.GetValues(typeof(Makyr.Utility.StaticDetails.GPUMemoryType)))
                                     {
                                         <option value="@memoryType">@memoryType</option>
@@ -62,7 +63,13 @@
                             </div>
                             <div class="mb-3">
                                 <label asp-for="MemorySize" class="mb-2"></label>
-                                <input asp-for="MemorySize" class="form-control" />
+                                <select asp-for="MemorySize" class="form-select">
+                                    <option value="">Select Memory Size</option>
+                                    @foreach (var memorySize in Makyr.Utility.StaticDetails.GPUMemorySizes)
+                                    {
+                                        <option value="@memorySize">@memorySize GB</option>
+                                    }
+                                </select>
                                 <span class="text-danger" asp-validation-for="MemorySize"></span>
                             </div>
                             <div class="mb-3">
@@ -82,7 +89,14 @@
                             </div>
                             <div class="mb-3">
                                 <label asp-for="BusType" class="mb-2"></label>
-                                <input asp-for="BusType" class="form-control" />
+                                <select asp-for="BusType" class="form-select">
+                                    <option value="">Select Bus Type</option>
+                                    @foreach (var busType in Makyr.Utility.StaticDetails.GPUBusTypes)
+                                    {
+                                        var bitValue = (int)busType;
+                                        <option value="@bitValue">@busType bit</option>
+                                    }
+                                </select>
                                 <span class="text-danger" asp-validation-for="BusType"></span>
                             </div>
                             <div class="mb-3">
@@ -91,6 +105,8 @@
                                 <span class="text-danger" asp-validation-for="CudaCores"></span>
                             </div>
                         </div>
+
+
                         <div class="tab-pane fade" id="v-pills-physical-attr" role="tabpanel" aria-labelledby="v-pills-physical-attr-tab" tabindex="0">
                             <div class="mb-3">
                                 <label asp-for="DisplayPort" class="mb-2"></label>
