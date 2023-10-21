@@ -11,7 +11,7 @@
     </div>
 
     <div class="card-body" style="min-height: 564px">
-        <form method="post" class="row">
+        <form id="product-add-form" method="post" class="row">
 
             <div class="p-3">
                 <div class="d-flex align-items-start flex-sm-row flex-column row">
@@ -193,7 +193,7 @@
 
     <div class="row mb-4 px-4">
         <div class="col-6 col-md-3">
-            <button type="submit" class="btn btn-primary me-2 form-control">Create</button>
+            <button id="submit-button" type="button" class="btn btn-primary me-2 form-control">Create</button>
         </div>
         <div class="col-6 col-md-3">
             <a asp-controller="Category" asp-action="Index" class="btn btn-outline-secondary form-control">Back to list</a>
@@ -205,6 +205,12 @@
     @{
             <partial name="_ValidationScriptsPartial"></partial>
     }
+
+    <script>
+        document.getElementById('submit-button').addEventListener('click', function () {
+            document.getElementById('product-add-form').submit();
+        });
+    </script>
 }
 
 

@@ -27,6 +27,11 @@ namespace MakyrWeb.Areas.Admin.Controllers
         [HttpPost]
         public IActionResult Create(GraphicsCard gpu)
         {
+            if(gpu.Quantity > 0)
+            {
+                gpu.IsInStock = true;
+            }
+
             if (ModelState.IsValid)
             {
                 _graphicsCardRepository.Add(gpu);

@@ -36,64 +36,64 @@ namespace Makyr.Models
         // Video Memory Specifications
 
         [Display(Name = "Memory Type")]
-        public string MemoryType { get; set; } // GDDR 5 / 6..
+        public string? MemoryType { get; set; } // GDDR 5 / 6..
         [Range(1, int.MaxValue, ErrorMessage = "Memory size must be at least 1")]
 
         [Display(Name = "Memory Size")]
-        public int MemorySize { get; set; } // 2Gb, 4Gb, 6Gb, 8Gb
+        public int? MemorySize { get; set; } // 2Gb, 4Gb, 6Gb, 8Gb
 
         [Display(Name = "Base Clock (Mhz)")]
         [Range(1, int.MaxValue, ErrorMessage = "Clock speed must be at least 1")]
-        public int BaseClock { get; set; } // in Mhz
+        public int? BaseClock { get; set; } // in Mhz
 
         [Display(Name = "Boost Clock (Mhz)")]
         [Range(1, int.MaxValue, ErrorMessage = "Clock speed must be at least 1")]
-        public int BoostClock { get; set; } // in Mhz
+        public int? BoostClock { get; set; } // in Mhz
 
         [Display(Name = "Memory Clock Speed (Gbps)")]
         [Range(1, int.MaxValue, ErrorMessage = "Memory clock speed must be at least 1")]
-        public int MemoryClockSpeed { get; set; } // in Gbps
+        public int? MemoryClockSpeed { get; set; } // in Gbps
 
         [Display(Name = "Bus Type")]
-        public int BusType { get; set; } // in bit
+        public int? BusType { get; set; } // in bit
 
         [Display(Name = "CUDA Cores")]
-        public int CudaCores { get; set; }
+        public int? CudaCores { get; set; }
 
         // Interface specs
         [Display(Name = "Display Port")]
-        public string DisplayPort { get; set; }
+        public string? DisplayPort { get; set; }
         [Display(Name = "HDMI")]
-        public string HdmiPort { get; set; }
+        public string? HdmiPort { get; set; }
 
         // Power Specs
-        public string Connectors { get; set; }
+        public string? Connectors { get; set; }
         [Display(Name = "Recommended PSU (Watt)")]
-        public int RecommendedPsu { get; set; } // in Watt
+        public int? RecommendedPsu { get; set; } // in Watt
 
         // Graphics api support
         [Display(Name = "DirectX")]
-        public string Directx { get; set; }
-        public string OpenGL { get; set; }
+        public string? Directx { get; set; }
+        public string? OpenGL { get; set; }
 
         // Physical Spec
         [Range(0, int.MaxValue, ErrorMessage = "Width cannot be negative number")]
-        public double Width { get; set; } // in mm
+        public double? Width { get; set; } // in mm
         [Range(0, int.MaxValue, ErrorMessage = "Height cannot be negative number")]
-        public double Height { get; set; } // in mm
+        public double? Height { get; set; } // in mm
         [Range(0, int.MaxValue, ErrorMessage = "Depth cannot be negative number")]
-        public double Depth { get; set; } // in mm
+        public double? Depth { get; set; } // in mm
 
         // Condition
-        public string Condition { get; set; } // new or used
+        public string? Condition { get; set; } // new or used
 
         // Warrenty
         [Display(Name = "Manufacturing Warrenty (Months)")]
         [Range(0, int.MaxValue, ErrorMessage = "Manufacturing warranty must be a positive number")]
-        public int ManufacturingWarrenty { get; set; } // warrenty in months
+        public int? ManufacturingWarrenty { get; set; } // warrenty in months
 
         [Display(Name = "Service Warrenty (Months)")]
         [Range(0, int.MaxValue, ErrorMessage = "Service warranty must be a positive number")]
-        public int ServiceWarrenty { get; set; } // for used gpu
+        public int? ServiceWarrenty { get; set; } // for used gpu
     }
 }
