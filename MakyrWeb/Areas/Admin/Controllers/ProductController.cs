@@ -18,5 +18,24 @@ namespace MakyrWeb.Areas.Admin.Controllers
             IEnumerable<GraphicsCard> gpus = _graphicsCardRepository.GetAll();
             return View(gpus);
         }
+
+        public IActionResult Create()
+        {
+            return View();
+        }
+
+        [HttpPost]
+        public IActionResult Create(GraphicsCard gpu)
+        {
+            if (ModelState.IsValid)
+            {
+                _graphicsCardRepository.Add(gpu);
+                _graphicsCardRepository.Save();
+                TempData["success"] = "Product added successfully";
+                return RedirectToAction("Index");
+            }
+            return View();
+        }
+
     }
 }
