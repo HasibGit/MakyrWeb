@@ -29,31 +29,50 @@ namespace Makyr.Models
         public int Quantity { get; set; }
         public bool IsInStock { get; set; } // in stock or out of stock
         [Required]
+        [Display(Name = "Price (US dollers)")]
         [Range(30, 30000, ErrorMessage = "Price must be between $30 and $30,000")]
         public double Price { get; set; } // in dollers
 
         // Video Memory Specifications
+
+        [Display(Name = "Memory Type")]
         public string MemoryType { get; set; } // GDDR 5 / 6..
         [Range(1, int.MaxValue, ErrorMessage = "Memory size must be at least 1")]
+
+        [Display(Name = "Memory Size")]
         public int MemorySize { get; set; } // 2Gb, 4Gb, 6Gb, 8Gb
+
+        [Display(Name = "Base Clock")]
         [Range(1, int.MaxValue, ErrorMessage = "Clock speed must be at least 1")]
         public int BaseClock { get; set; } // in Mhz
+
+        [Display(Name = "Boost Clock")]
         [Range(1, int.MaxValue, ErrorMessage = "Clock speed must be at least 1")]
         public int BoostClock { get; set; } // in Mhz
+
+        [Display(Name = "Memory Clock Speed")]
         [Range(1, int.MaxValue, ErrorMessage = "Memory clock speed must be at least 1")]
         public int MemoryClockSpeed { get; set; } // in Gbps
+
+        [Display(Name = "Bus Type")]
         public int BusType { get; set; } // in bit
+
+        [Display(Name = "CUDA Cores")]
         public int CudaCores { get; set; }
 
         // Interface specs
+        [Display(Name = "Display Port")]
         public string DisplayPort { get; set; }
+        [Display(Name = "HDMI")]
         public string HdmiPort { get; set; }
 
         // Power Specs
         public string Connectors { get; set; }
+        [Display(Name = "Recommended PSU")]
         public int RecommendedPsu { get; set; } // in Watt
 
         // Graphics api support
+        [Display(Name = "DirectX")]
         public string Directx { get; set; }
         public string OpenGL { get; set; }
 
@@ -69,8 +88,11 @@ namespace Makyr.Models
         public string Condition { get; set; } // new or used
 
         // Warrenty
+        [Display(Name = "Manufacturing Warrenty")]
         [Range(0, int.MaxValue, ErrorMessage = "Manufacturing warranty must be a positive number")]
         public int ManufacturingWarrenty { get; set; } // warrenty in months
+
+        [Display(Name = "Service Warrenty")]
         [Range(0, int.MaxValue, ErrorMessage = "Service warranty must be a positive number")]
         public int ServiceWarrenty { get; set; } // for used gpu
     }

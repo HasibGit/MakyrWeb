@@ -1,4 +1,5 @@
 ﻿@model GraphicsCard
+@using Makyr.Utility
 
 <div class="card shadow border-0 mt-4">
     <div class="card-header bg-primary bg-gradient ml-0 py-3">
@@ -11,42 +12,6 @@
 
     <div class="card-body" style="min-height: 564px">
         <form method="post" class="row">
-            @* <div class="p-3">
-                <h5 class="mb-3">Key Features</h5>
-                <div class="mb-3">
-                    <label asp-for="Brand" class="mb-2"></label>
-                    <input asp-for="Brand" class="form-control" />
-                    <span class="text-danger" asp-validation-for="Brand"></span>
-                </div>
-                <div class="mb-3">
-                    <label asp-for="Model" class="mb-2"></label>
-                    <input asp-for="Model" class="form-control" />
-                    <span class="text-danger" asp-validation-for="Model"></span>
-                </div>
-                <div class="mb-3">
-                    <label asp-for="ProductCode" class="mb-2"></label>
-                    <input asp-for="ProductCode" class="form-control" />
-                    <span class="text-danger" asp-validation-for="ProductCode"></span>
-                </div>
-                <div class="mb-3">
-                    <label asp-for="Quantity" class="mb-2"></label>
-                    <input asp-for="Quantity" class="form-control" />
-                    <span class="text-danger" asp-validation-for="Quantity"></span>
-                </div>
-                <div class="mb-5">
-                    <label asp-for="Price" class="mb-2"></label>
-                    <input type="number" asp-for="Price" class="form-control" />
-                    <span class="text-danger" asp-validation-for="Price"></span>
-                </div>
-                <div class="row">
-                    <div class="col-6 col-md-3">
-                        <button type="submit" class="btn btn-primary me-2 form-control">Create</button>
-                    </div>
-                    <div class="col-6 col-md-3">
-                        <a asp-controller="Category" asp-action="Index" class="btn btn-outline-secondary form-control">Back to list</a>
-                    </div>
-                </div>
-            </div> *@
 
             <div class="p-3">
                 <div class="d-flex align-items-start flex-sm-row flex-column row">
@@ -78,15 +43,118 @@
                                 <input asp-for="Quantity" class="form-control" />
                                 <span class="text-danger" asp-validation-for="Quantity"></span>
                             </div>
-                            <div class="mb-5">
+                            <div class="mb-2">
                                 <label asp-for="Price" class="mb-2"></label>
                                 <input type="number" asp-for="Price" class="form-control" />
                                 <span class="text-danger" asp-validation-for="Price"></span>
                             </div>
                         </div>
-                        <div class="tab-pane fade" id="v-pills-video-memory" role="tabpanel" aria-labelledby="v-pills-video-memory-tab" tabindex="0">Video Memory</div>
-                        <div class="tab-pane fade" id="v-pills-physical-attr" role="tabpanel" aria-labelledby="v-pills-physical-attr-tab" tabindex="0">Physical Attributes</div>
-                        <div class="tab-pane fade" id="v-pills-other-info" role="tabpanel" aria-labelledby="v-pills-other-info-tab" tabindex="0">Other info</div>
+                        <div class="tab-pane fade" id="v-pills-video-memory" role="tabpanel" aria-labelledby="v-pills-video-memory-tab" tabindex="0">
+                            <div class="mb-3">
+                                <label asp-for="MemoryType" class="mb-2"></label>
+                                <select asp-for="MemoryType" class="form-select">
+                                    @foreach (var memoryType in Enum.GetValues(typeof(Makyr.Utility.StaticDetails.GPUMemoryType)))
+                                    {
+                                        <option value="@memoryType">@memoryType</option>
+                                    }
+                                </select>
+                                <span class="text-danger" asp-validation-for="MemoryType"></span>
+                            </div>
+                            <div class="mb-3">
+                                <label asp-for="MemorySize" class="mb-2"></label>
+                                <input asp-for="MemorySize" class="form-control" />
+                                <span class="text-danger" asp-validation-for="MemorySize"></span>
+                            </div>
+                            <div class="mb-3">
+                                <label asp-for="BaseClock" class="mb-2"></label>
+                                <input asp-for="BaseClock" class="form-control" />
+                                <span class="text-danger" asp-validation-for="BaseClock"></span>
+                            </div>
+                            <div class="mb-3">
+                                <label asp-for="BoostClock" class="mb-2"></label>
+                                <input asp-for="BoostClock" class="form-control" />
+                                <span class="text-danger" asp-validation-for="BoostClock"></span>
+                            </div>
+                            <div class="mb-3">
+                                <label asp-for="MemoryClockSpeed" class="mb-2"></label>
+                                <input asp-for="MemoryClockSpeed" class="form-control" />
+                                <span class="text-danger" asp-validation-for="MemoryClockSpeed"></span>
+                            </div>
+                            <div class="mb-3">
+                                <label asp-for="BusType" class="mb-2"></label>
+                                <input asp-for="BusType" class="form-control" />
+                                <span class="text-danger" asp-validation-for="BusType"></span>
+                            </div>
+                            <div class="mb-3">
+                                <label asp-for="CudaCores" class="mb-2"></label>
+                                <input asp-for="CudaCores" class="form-control" />
+                                <span class="text-danger" asp-validation-for="CudaCores"></span>
+                            </div>
+                        </div>
+                        <div class="tab-pane fade" id="v-pills-physical-attr" role="tabpanel" aria-labelledby="v-pills-physical-attr-tab" tabindex="0">
+                            <div class="mb-3">
+                                <label asp-for="DisplayPort" class="mb-2"></label>
+                                <input asp-for="DisplayPort" class="form-control" />
+                                <span class="text-danger" asp-validation-for="DisplayPort"></span>
+                            </div>
+                             <div class="mb-3">
+                                <label asp-for="HdmiPort" class="mb-2"></label>
+                                <input asp-for="HdmiPort" class="form-control" />
+                                <span class="text-danger" asp-validation-for="HdmiPort"></span>
+                            </div>
+                            <div class="mb-3">
+                                <label asp-for="Connectors" class="mb-2"></label>
+                                <input asp-for="Connectors" class="form-control" />
+                                <span class="text-danger" asp-validation-for="Connectors"></span>
+                            </div>
+                             <div class="mb-3">
+                                <label asp-for="RecommendedPsu" class="mb-2"></label>
+                                <input asp-for="RecommendedPsu" class="form-control" />
+                                <span class="text-danger" asp-validation-for="RecommendedPsu"></span>
+                            </div>
+                             <div class="mb-3">
+                                <label asp-for="Directx" class="mb-2"></label>
+                                <input asp-for="Directx" class="form-control" />
+                                <span class="text-danger" asp-validation-for="Directx"></span>
+                            </div>
+                             <div class="mb-3">
+                                <label asp-for="OpenGL" class="mb-2"></label>
+                                <input asp-for="OpenGL" class="form-control" />
+                                <span class="text-danger" asp-validation-for="OpenGL"></span>
+                            </div>
+                             <div class="mb-3">
+                                <label asp-for="Width" class="mb-2"></label>
+                                <input asp-for="Width" class="form-control" />
+                                <span class="text-danger" asp-validation-for="Width"></span>
+                            </div>
+                             <div class="mb-3">
+                                <label asp-for="Height" class="mb-2"></label>
+                                <input asp-for="Height" class="form-control" />
+                                <span class="text-danger" asp-validation-for="Height"></span>
+                            </div>
+                            <div class="mb-3">
+                                <label asp-for="Depth" class="mb-2"></label>
+                                <input asp-for="Depth" class="form-control" />
+                                <span class="text-danger" asp-validation-for="Depth"></span>
+                            </div>
+                        </div>
+                        <div class="tab-pane fade" id="v-pills-other-info" role="tabpanel" aria-labelledby="v-pills-other-info-tab" tabindex="0">
+                            <div class="mb-3">
+                                <label asp-for="Condition" class="mb-2"></label>
+                                <input asp-for="Condition" class="form-control" />
+                                <span class="text-danger" asp-validation-for="Condition"></span>
+                            </div>
+                            <div class="mb-3">
+                                <label asp-for="ManufacturingWarrenty" class="mb-2"></label>
+                                <input asp-for="ManufacturingWarrenty" class="form-control" />
+                                <span class="text-danger" asp-validation-for="ManufacturingWarrenty"></span>
+                            </div>
+                            <div class="mb-3">
+                                <label asp-for="ServiceWarrenty" class="mb-2"></label>
+                                <input asp-for="ServiceWarrenty" class="form-control" />
+                                <span class="text-danger" asp-validation-for="ServiceWarrenty"></span>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
