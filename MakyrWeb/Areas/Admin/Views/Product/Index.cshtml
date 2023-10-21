@@ -1,0 +1,69 @@
+﻿@model List<GraphicsCard>
+
+<div class="card shadow border-0 mt-4">
+    <div class="card-header bg-primary bg-gradient ml-0 py-3">
+        <div class="row">
+            <div class="col-12 text-center">
+                <h2 class="text-white">Graphics Cards List</h2>
+            </div>
+        </div>
+    </div>
+
+    <div class="card-body p-4">
+
+        <div class="row pb-3">
+            <div class="col-12 text-end">
+                <a asp-controller="Category" asp-action="Create" class="btn btn-primary">
+                    <i class="bi bi-plus-square"></i>
+                    <span style="margin-left: 4px">Add New Gpu</span>
+                </a>
+            </div>
+        </div>
+
+        <table class="table table-bordered table-striped mt-3">
+
+            <thead>
+                <tr>
+                    <th>
+                        Model
+                    </th>
+                    <th>
+                        Brand
+                    </th>
+                    <th>
+                        Status
+                    </th>
+                    <th>
+                        Price
+                    </th>
+                    <th>Action</th>
+                </tr>
+            </thead>
+
+            <tbody>
+                @foreach (var obj in Model)
+                {
+                    <tr>
+                        <td>@obj.Model</td>
+                        <td>@obj.Brand</td>
+                        <td>@(obj.IsInStock ? "In stock" : "Out of stock")</td>
+                        <td>$ @obj.Price</td>
+                        <td>
+                            <div class="w-75 btn-group" role="group">
+                                <a asp-controller="Category" asp-action="Edit" asp-route-id="@obj.Id" class="btn btn-primary mx-2">
+                                    <i class="bi bi-pencil-fill"></i>
+                                    Edit
+                                </a>
+                                <a asp-controller="Category" asp-action="Delete" asp-route-id="@obj.Id" class="btn btn-danger">
+                                    <i class="bi bi-trash"></i>
+                                    Delete
+                                </a>
+                            </div>
+                        </td>
+                    </tr>
+                }
+            </tbody>
+
+        </table>
+    </div>
+</div>

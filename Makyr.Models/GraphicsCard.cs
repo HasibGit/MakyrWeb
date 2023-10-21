@@ -21,12 +21,13 @@ namespace Makyr.Models
         [StringLength(50, MinimumLength = 3, ErrorMessage = "Model name must be between 3 and 50 characters.")]
         public string Model { get; set; }
         [Required]
-        [Display(Name="Product Code")]
+        [Display(Name = "Product Code")]
         [StringLength(6, MinimumLength = 3, ErrorMessage = "Product code must be between 3 and 6 characters.")]
         public string ProductCode { get; set; }
         [Required]
-        [StringLength(10, MinimumLength = 3, ErrorMessage = "Character limit is 3 to 10 characters")]
-        public string Status { get; set; }
+        [Range(1, int.MaxValue, ErrorMessage ="Quantity must be positive number")]
+        public int Quantity { get; set; }
+        public bool IsInStock { get; set; } // in stock or out of stock
         [Required]
         [Range(30, 30000, ErrorMessage = "Price must be between $30 and $30,000")]
         public double Price { get; set; } // in dollers

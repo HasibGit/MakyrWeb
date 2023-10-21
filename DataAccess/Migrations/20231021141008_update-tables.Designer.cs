@@ -12,8 +12,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace Makyr.DataAccess.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20231020175637_AddGraphicCardTableToDb")]
-    partial class AddGraphicCardTableToDb
+    [Migration("20231021141008_update-tables")]
+    partial class updatetables
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -114,6 +114,9 @@ namespace Makyr.DataAccess.Migrations
                     b.Property<double>("Height")
                         .HasColumnType("float");
 
+                    b.Property<bool>("IsInStock")
+                        .HasColumnType("bit");
+
                     b.Property<int>("ManufacturingWarrenty")
                         .HasColumnType("int");
 
@@ -144,16 +147,14 @@ namespace Makyr.DataAccess.Migrations
                         .HasMaxLength(6)
                         .HasColumnType("nvarchar(6)");
 
+                    b.Property<int>("Quantity")
+                        .HasColumnType("int");
+
                     b.Property<int>("RecommendedPsu")
                         .HasColumnType("int");
 
                     b.Property<int>("ServiceWarrenty")
                         .HasColumnType("int");
-
-                    b.Property<string>("Status")
-                        .IsRequired()
-                        .HasMaxLength(10)
-                        .HasColumnType("nvarchar(10)");
 
                     b.Property<double>("Width")
                         .HasColumnType("float");
@@ -165,7 +166,7 @@ namespace Makyr.DataAccess.Migrations
                     b.HasData(
                         new
                         {
-                            Id = new Guid("873ff6c5-b2fe-4dd2-a6be-64fc86d51941"),
+                            Id = new Guid("16e982e6-0db8-40de-8e0b-802365857028"),
                             BaseClock = 1607,
                             BoostClock = 1733,
                             Brand = "Nvidia",
@@ -178,6 +179,7 @@ namespace Makyr.DataAccess.Migrations
                             DisplayPort = "3",
                             HdmiPort = "1",
                             Height = 111.2,
+                            IsInStock = true,
                             ManufacturingWarrenty = 12,
                             MemoryClockSpeed = 10,
                             MemorySize = 8,
@@ -186,14 +188,14 @@ namespace Makyr.DataAccess.Migrations
                             OpenGL = "OpenGL 4.5",
                             Price = 599.99000000000001,
                             ProductCode = "ABC123",
+                            Quantity = 3,
                             RecommendedPsu = 500,
                             ServiceWarrenty = 0,
-                            Status = "New",
                             Width = 267.69999999999999
                         },
                         new
                         {
-                            Id = new Guid("2ed3ff50-a9de-496b-ba3f-fccc775ef9e9"),
+                            Id = new Guid("10bf5b94-00e8-4fb4-9c3d-4d001f41fc64"),
                             BaseClock = 1605,
                             BoostClock = 1905,
                             Brand = "AMD",
@@ -206,6 +208,7 @@ namespace Makyr.DataAccess.Migrations
                             DisplayPort = "3",
                             HdmiPort = "1",
                             Height = 116.59999999999999,
+                            IsInStock = true,
                             ManufacturingWarrenty = 0,
                             MemoryClockSpeed = 14,
                             MemorySize = 8,
@@ -214,14 +217,14 @@ namespace Makyr.DataAccess.Migrations
                             OpenGL = "OpenGL 4.6",
                             Price = 299.99000000000001,
                             ProductCode = "XYZ456",
+                            Quantity = 10,
                             RecommendedPsu = 600,
                             ServiceWarrenty = 6,
-                            Status = "Used",
                             Width = 268.0
                         },
                         new
                         {
-                            Id = new Guid("d3dea808-0654-4e6d-89c7-2e5c1efc113e"),
+                            Id = new Guid("5e5846cf-542d-4922-b53b-2714ea5e0d69"),
                             BaseClock = 1410,
                             BoostClock = 1695,
                             Brand = "MSI",
@@ -234,6 +237,7 @@ namespace Makyr.DataAccess.Migrations
                             DisplayPort = "3",
                             HdmiPort = "1",
                             Height = 115.0,
+                            IsInStock = false,
                             ManufacturingWarrenty = 24,
                             MemoryClockSpeed = 14,
                             MemorySize = 8,
@@ -242,9 +246,9 @@ namespace Makyr.DataAccess.Migrations
                             OpenGL = "OpenGL 4.6",
                             Price = 449.99000000000001,
                             ProductCode = "LMN789",
+                            Quantity = 0,
                             RecommendedPsu = 650,
                             ServiceWarrenty = 0,
-                            Status = "New",
                             Width = 245.0
                         });
                 });
