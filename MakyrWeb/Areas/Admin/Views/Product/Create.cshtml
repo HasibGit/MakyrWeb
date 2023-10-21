@@ -9,7 +9,7 @@
         </div>
     </div>
 
-    <div class="card-body">
+    <div class="card-body" style="min-height: 564px">
         <form method="post" class="row">
             @* <div class="p-3">
                 <h5 class="mb-3">Key Features</h5>
@@ -49,27 +49,64 @@
             </div> *@
 
             <div class="p-3">
-                <div class="d-flex align-items-start">
-                    <div class="nav flex-column nav-pills me-3" id="v-pills-tab" role="tablist" aria-orientation="vertical">
+                <div class="d-flex align-items-start flex-sm-row flex-column row">
+                    <div class="nav flex-column nav-pills me-3 col-md-4 col-lg-4 col-sm-12" id="v-pills-tab" role="tablist" aria-orientation="vertical">
                         <button class="nav-link active" id="v-pills-key-features-tab" data-bs-toggle="pill" data-bs-target="#v-pills-key-features" type="button" role="tab" aria-controls="v-pills-key-features" aria-selected="true">Key Features</button>
                         <button class="nav-link" id="v-pills-video-memory-tab" data-bs-toggle="pill" data-bs-target="#v-pills-video-memory" type="button" role="tab" aria-controls="v-pills-video-memory" aria-selected="false">Video Memory Specifications</button>
                         <button class="nav-link" id="v-pills-physical-attr-tab" data-bs-toggle="pill" data-bs-target="#v-pills-physical-attr" type="button" role="tab" aria-controls="v-pills-physical-attr" aria-selected="false">Physical Attributes</button>
                         <button class="nav-link" id="v-pills-other-info-tab" data-bs-toggle="pill" data-bs-target="#v-pills-other-info" type="button" role="tab" aria-controls="v-pills-other-info" aria-selected="false">Other Information</button>
                     </div>
-                    <div class="tab-content" id="v-pills-tabContent">
-                        <div class="tab-pane fade show active" id="v-pills-key-features" role="tabpanel" aria-labelledby="v-pills-key-features-tab" tabindex="0">Key Features</div>
+                    <div class="tab-content col-md-6 col-lg-6 col-sm-12" id="v-pills-tabContent">
+                        <div class="tab-pane fade show active" id="v-pills-key-features" role="tabpanel" aria-labelledby="v-pills-key-features-tab" tabindex="0">
+                            <div class="mb-3">
+                                <label asp-for="Brand" class="mb-2"></label>
+                                <input asp-for="Brand" class="form-control" />
+                                <span class="text-danger" asp-validation-for="Brand"></span>
+                            </div>
+                            <div class="mb-3">
+                                <label asp-for="Model" class="mb-2"></label>
+                                <input asp-for="Model" class="form-control" />
+                                <span class="text-danger" asp-validation-for="Model"></span>
+                            </div>
+                            <div class="mb-3">
+                                <label asp-for="ProductCode" class="mb-2"></label>
+                                <input asp-for="ProductCode" class="form-control" />
+                                <span class="text-danger" asp-validation-for="ProductCode"></span>
+                            </div>
+                            <div class="mb-3">
+                                <label asp-for="Quantity" class="mb-2"></label>
+                                <input asp-for="Quantity" class="form-control" />
+                                <span class="text-danger" asp-validation-for="Quantity"></span>
+                            </div>
+                            <div class="mb-5">
+                                <label asp-for="Price" class="mb-2"></label>
+                                <input type="number" asp-for="Price" class="form-control" />
+                                <span class="text-danger" asp-validation-for="Price"></span>
+                            </div>
+                        </div>
                         <div class="tab-pane fade" id="v-pills-video-memory" role="tabpanel" aria-labelledby="v-pills-video-memory-tab" tabindex="0">Video Memory</div>
                         <div class="tab-pane fade" id="v-pills-physical-attr" role="tabpanel" aria-labelledby="v-pills-physical-attr-tab" tabindex="0">Physical Attributes</div>
                         <div class="tab-pane fade" id="v-pills-other-info" role="tabpanel" aria-labelledby="v-pills-other-info-tab" tabindex="0">Other info</div>
                     </div>
                 </div>
             </div>
-        </form>
+        </form>  
+    </div>
+
+    <div class="row mb-4 px-4">
+        <div class="col-6 col-md-3">
+            <button type="submit" class="btn btn-primary me-2 form-control">Create</button>
+        </div>
+        <div class="col-6 col-md-3">
+            <a asp-controller="Category" asp-action="Index" class="btn btn-outline-secondary form-control">Back to list</a>
+        </div>
     </div>
 </div>
 
 @section Scripts{
     @{
-        <partial name="_ValidationScriptsPartial"></partial>
+            <partial name="_ValidationScriptsPartial"></partial>
     }
 }
+
+
