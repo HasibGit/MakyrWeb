@@ -76,5 +76,35 @@ namespace MakyrWeb.Areas.Admin.Controllers
             return View();
         }
 
+        public async Task<IActionResult> Delete(Guid? id)
+        {
+            if (id == null)
+            {
+                return NotFound();
+            }
+
+            GraphicsCard? obj = await _graphicsCardRepository.GetAsync(x => x.Id == id);
+
+            if (obj == null)
+            {
+                return NotFound();
+            }
+
+            return View(obj);
+        }
+
+        [HttpPost]
+        public IActionResult Delete(GraphicsCard gpu)
+        {
+            if (gpu == null)
+            {
+                return NotFound();
+            }
+
+            _graphicsCardRepository.Remove(gpu);
+            _graphicsCardRepository.Save();
+            TempData["error"] = "Gpu data deleted successfully";
+            return RedirectToAction("Index");
+        }
     }
 }
