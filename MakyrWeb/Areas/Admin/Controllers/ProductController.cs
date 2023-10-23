@@ -42,5 +42,39 @@ namespace MakyrWeb.Areas.Admin.Controllers
             return View();
         }
 
+        public async Task<IActionResult> Edit(Guid? id)
+        {
+            if (id == null)
+            {
+                return NotFound();
+            }
+
+            GraphicsCard gpu = await _graphicsCardRepository.GetAsync(x => x.Id == id);
+
+            if (gpu == null)
+            {
+                return NotFound();
+            }
+            return View(gpu);
+        }
+
+        [HttpPost]
+        public IActionResult Edit(GraphicsCard gpu)
+        {
+            if (gpu.Quantity > 0)
+            {
+                gpu.IsInStock = true;
+            }
+
+            if (ModelState.IsValid)
+            {
+                _graphicsCardRepository.Update(gpu);
+                _graphicsCardRepository.Save();
+                TempData["success"] = "Gpu data updated successfully";
+                return RedirectToAction("Index");
+            }
+            return View();
+        }
+
     }
 }

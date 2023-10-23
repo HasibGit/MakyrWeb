@@ -1,0 +1,216 @@
+﻿@model GraphicsCard
+@using Makyr.Utility
+
+<div class="card shadow border-0 mt-4">
+    <div class="card-header bg-primary bg-gradient ml-0 py-3">
+        <div class="row">
+            <div class="col-12 text-center">
+                <h2 class="text-white py-2">Edit Graphics Card</h2>
+            </div>
+        </div>
+    </div>
+
+    <div class="card-body" style="min-height: 564px">
+        <form id="product-add-form" method="post" class="row">
+
+            <div class="p-3">
+                <div class="d-flex align-items-start flex-sm-row flex-column row">
+                    <div class="nav flex-column nav-pills me-3 col-md-4 col-lg-4 col-sm-12" id="v-pills-tab" role="tablist" aria-orientation="vertical">
+                        <button class="nav-link active" id="v-pills-key-features-tab" data-bs-toggle="pill" data-bs-target="#v-pills-key-features" type="button" role="tab" aria-controls="v-pills-key-features" aria-selected="true">Key Features</button>
+                        <button class="nav-link" id="v-pills-video-memory-tab" data-bs-toggle="pill" data-bs-target="#v-pills-video-memory" type="button" role="tab" aria-controls="v-pills-video-memory" aria-selected="false">Video Memory Specifications</button>
+                        <button class="nav-link" id="v-pills-physical-attr-tab" data-bs-toggle="pill" data-bs-target="#v-pills-physical-attr" type="button" role="tab" aria-controls="v-pills-physical-attr" aria-selected="false">Physical Attributes</button>
+                        <button class="nav-link" id="v-pills-other-info-tab" data-bs-toggle="pill" data-bs-target="#v-pills-other-info" type="button" role="tab" aria-controls="v-pills-other-info" aria-selected="false">Other Information</button>
+                    </div>
+                    <div class="tab-content col-md-6 col-lg-6 col-sm-12" id="v-pills-tabContent">
+
+                        @* KEY FEATURES  *@
+
+                        <div class="tab-pane fade show active" id="v-pills-key-features" role="tabpanel" aria-labelledby="v-pills-key-features-tab" tabindex="0">
+                            <div class="mb-3">
+                                @Html.LabelFor(m => m.Brand, new { @class="required mb-2" })
+                                <input asp-for="Brand" class="form-control" />
+                                <span class="text-danger" asp-validation-for="Brand"></span>
+                            </div>
+                            <div class="mb-3">
+                                @Html.LabelFor(m => m.Model, new { @class="required mb-2" })
+                                <input asp-for="Model" class="form-control" />
+                                <span class="text-danger" asp-validation-for="Model"></span>
+                            </div>
+                            <div class="mb-3">
+                                @Html.LabelFor(m => m.ProductCode, new { @class="required mb-2" })
+                                <input asp-for="ProductCode" class="form-control" />
+                                <span class="text-danger" asp-validation-for="ProductCode"></span>
+                            </div>
+                            <div class="mb-3">
+                                @Html.LabelFor(m => m.Quantity, new { @class="required mb-2" })
+                                <input asp-for="Quantity" class="form-control" />
+                                <span class="text-danger" asp-validation-for="Quantity"></span>
+                            </div>
+                            <div class="mb-2">
+                                @Html.LabelFor(m => m.Price, new { @class="required mb-2" })
+                                <input type="number" asp-for="Price" class="form-control" />
+                                <span class="text-danger" asp-validation-for="Price"></span>
+                            </div>
+                        </div>
+
+                        @* VIDEO MEMORY SPECIFICATIONS *@
+
+                        <div class="tab-pane fade" id="v-pills-video-memory" role="tabpanel" aria-labelledby="v-pills-video-memory-tab" tabindex="0">
+                            <div class="mb-3">
+                                <label asp-for="MemoryType" class="mb-2"></label>
+                                <select asp-for="MemoryType" class="form-select">
+                                    <option value="">Select Memory Type</option>
+                                    @foreach (var memoryType in Enum.GetValues(typeof(Makyr.Utility.StaticDetails.GPUMemoryType)))
+                                    {
+                                        <option value="@memoryType">@memoryType</option>
+                                    }
+                                </select>
+                                <span class="text-danger" asp-validation-for="MemoryType"></span>
+                            </div>
+                            <div class="mb-3">
+                                <label asp-for="MemorySize" class="mb-2"></label>
+                                <select asp-for="MemorySize" class="form-select">
+                                    <option value="">Select Memory Size</option>
+                                    @foreach (var memorySize in Makyr.Utility.StaticDetails.GPUMemorySizes)
+                                    {
+                                        <option value="@memorySize">@memorySize GB</option>
+                                    }
+                                </select>
+                                <span class="text-danger" asp-validation-for="MemorySize"></span>
+                            </div>
+                            <div class="mb-3">
+                                <label asp-for="BaseClock" class="mb-2"></label>
+                                <input asp-for="BaseClock" class="form-control" />
+                                <span class="text-danger" asp-validation-for="BaseClock"></span>
+                            </div>
+                            <div class="mb-3">
+                                <label asp-for="BoostClock" class="mb-2"></label>
+                                <input asp-for="BoostClock" class="form-control" />
+                                <span class="text-danger" asp-validation-for="BoostClock"></span>
+                            </div>
+                            <div class="mb-3">
+                                <label asp-for="MemoryClockSpeed" class="mb-2"></label>
+                                <input asp-for="MemoryClockSpeed" class="form-control" />
+                                <span class="text-danger" asp-validation-for="MemoryClockSpeed"></span>
+                            </div>
+                            <div class="mb-3">
+                                <label asp-for="BusType" class="mb-2"></label>
+                                <select asp-for="BusType" class="form-select">
+                                    <option value="">Select Bus Type</option>
+                                    @foreach (var busType in Makyr.Utility.StaticDetails.GPUBusTypes)
+                                    {
+                                        var bitValue = (int)busType;
+                                        <option value="@bitValue">@busType bit</option>
+                                    }
+                                </select>
+                                <span class="text-danger" asp-validation-for="BusType"></span>
+                            </div>
+                            <div class="mb-3">
+                                <label asp-for="CudaCores" class="mb-2"></label>
+                                <input asp-for="CudaCores" class="form-control" />
+                                <span class="text-danger" asp-validation-for="CudaCores"></span>
+                            </div>
+                        </div>
+
+                        @* PHYSICAL ATTRIBUTES *@
+
+                        <div class="tab-pane fade" id="v-pills-physical-attr" role="tabpanel" aria-labelledby="v-pills-physical-attr-tab" tabindex="0">
+                            <div class="mb-3">
+                                <label asp-for="DisplayPort" class="mb-2"></label>
+                                <input asp-for="DisplayPort" class="form-control" />
+                                <span class="text-danger" asp-validation-for="DisplayPort"></span>
+                            </div>
+                            <div class="mb-3">
+                                <label asp-for="HdmiPort" class="mb-2"></label>
+                                <input asp-for="HdmiPort" class="form-control" />
+                                <span class="text-danger" asp-validation-for="HdmiPort"></span>
+                            </div>
+                            <div class="mb-3">
+                                <label asp-for="Connectors" class="mb-2"></label>
+                                <input asp-for="Connectors" class="form-control" />
+                                <span class="text-danger" asp-validation-for="Connectors"></span>
+                            </div>
+                            <div class="mb-3">
+                                <label asp-for="RecommendedPsu" class="mb-2"></label>
+                                <input asp-for="RecommendedPsu" class="form-control" />
+                                <span class="text-danger" asp-validation-for="RecommendedPsu"></span>
+                            </div>
+                            <div class="mb-3">
+                                <label asp-for="Directx" class="mb-2"></label>
+                                <input asp-for="Directx" class="form-control" />
+                                <span class="text-danger" asp-validation-for="Directx"></span>
+                            </div>
+                            <div class="mb-3">
+                                <label asp-for="OpenGL" class="mb-2"></label>
+                                <input asp-for="OpenGL" class="form-control" />
+                                <span class="text-danger" asp-validation-for="OpenGL"></span>
+                            </div>
+                            <div class="mb-3">
+                                <label asp-for="Width" class="mb-2"></label>
+                                <input asp-for="Width" class="form-control" />
+                                <span class="text-danger" asp-validation-for="Width"></span>
+                            </div>
+                            <div class="mb-3">
+                                <label asp-for="Height" class="mb-2"></label>
+                                <input asp-for="Height" class="form-control" />
+                                <span class="text-danger" asp-validation-for="Height"></span>
+                            </div>
+                            <div class="mb-3">
+                                <label asp-for="Depth" class="mb-2"></label>
+                                <input asp-for="Depth" class="form-control" />
+                                <span class="text-danger" asp-validation-for="Depth"></span>
+                            </div>
+                        </div>
+                        <div class="tab-pane fade" id="v-pills-other-info" role="tabpanel" aria-labelledby="v-pills-other-info-tab" tabindex="0">
+                            <div class="mb-3">
+                                <label asp-for="Condition" class="mb-2"></label>
+                                <select asp-for="Condition" class="form-select">
+                                    <option value="">Select condition</option>
+                                    @foreach (var condition in Makyr.Utility.StaticDetails.GPUConditions)
+                                    {
+                                        <option value="@condition">@condition</option>
+                                    }
+                                </select>
+
+                                <span class="text-danger" asp-validation-for="Condition"></span>
+                            </div>
+                            <div class="mb-3">
+                                <label asp-for="ManufacturingWarrenty" class="mb-2"></label>
+                                <input asp-for="ManufacturingWarrenty" class="form-control" />
+                                <span class="text-danger" asp-validation-for="ManufacturingWarrenty"></span>
+                            </div>
+                            <div class="mb-3">
+                                <label asp-for="ServiceWarrenty" class="mb-2"></label>
+                                <input asp-for="ServiceWarrenty" class="form-control" />
+                                <span class="text-danger" asp-validation-for="ServiceWarrenty"></span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </form>
+    </div>
+
+    <div class="row mb-4 px-4">
+        <div class="col-6 col-md-3">
+            <button id="submit-button" type="button" class="btn btn-primary me-2 form-control">Edit</button>
+        </div>
+        <div class="col-6 col-md-3">
+            <a asp-controller="Product" asp-action="Index" class="btn btn-outline-secondary form-control">Back to list</a>
+        </div>
+    </div>
+</div>
+
+@section Scripts{
+    @{
+        <partial name="_ValidationScriptsPartial"></partial>
+    }
+
+    <script>
+        document.getElementById('submit-button').addEventListener('click', function () {
+            document.getElementById('product-add-form').submit();
+        });
+    </script>
+}
+
+
