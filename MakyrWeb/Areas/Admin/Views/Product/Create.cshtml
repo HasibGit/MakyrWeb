@@ -51,6 +51,18 @@
                                 <input type="number" asp-for="Price" class="form-control" />
                                 <span class="text-danger" asp-validation-for="Price"></span>
                             </div>
+                            <div class="mb-2">
+                                <label asp-for="FirstImageUrl" class="form-label mb-2"></label>
+                                <input class="form-control" type="file" id="formFile">
+                            </div>
+                            <div class="mb-2">
+                                <label asp-for="SecondImageUrl" class="form-label mb-2"></label>
+                                <input class="form-control" type="file" id="formFile">
+                            </div>
+                            <div class="mb-2">
+                                <label asp-for="ThirdImageUrl" class="form-label mb-2"></label>
+                                <input class="form-control" type="file" id="formFile">
+                            </div>
                         </div>
 
                         @* VIDEO MEMORY SPECIFICATIONS *@
