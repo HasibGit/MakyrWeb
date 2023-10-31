@@ -33,6 +33,15 @@ namespace Makyr.Models
         [Range(30, 30000, ErrorMessage = "Price must be between $30 and $30,000")]
         public double Price { get; set; } // in dollers
 
+        [Display(Name = "First Image Url")]
+        public string? FirstImageUrl { get; set; }
+
+        [Display(Name = "Second Image Url")]
+        public string? SecondImageUrl { get; set; }
+
+        [Display(Name = "Third Image Url")]
+        public string? ThirdImageUrl { get; set; }
+
         // Video Memory Specifications
 
         [Display(Name = "Memory Type")]
